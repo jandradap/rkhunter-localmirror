@@ -1,31 +1,8 @@
-# Nginx AutoIndex
+# rkhunter-mirror [![](https://images.microbadger.com/badges/image/jorgeandrada/rkhunter-localmirror.svg)](https://microbadger.com/images/jorgeandrada/rkhunter-localmirror "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/jorgeandrada/rkhunter-localmirror.svg)](https://microbadger.com/images/jorgeandrada/rkhunter-localmirror "Get your own version badge on microbadger.com")
 
-[![](https://images.microbadger.com/badges/version/jorgeandrada/nginx-autoindex.svg)](https://microbadger.com/images/jorgeandrada/nginx-autoindex "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/jorgeandrada/nginx-autoindex.svg)](https://microbadger.com/images/jorgeandrada/nginx-autoindex "Get your own image badge on microbadger.com")
-
-A branch of nginx:latest with autoindex on.
-Serves all files in `/usr/share/nginx/html`
-
-#### nginx:latest
-
-    location / {
-        root   /usr/share/nginx/html;
-        index  index.html index.htm;
-    }
-
-
-#### jorgeandrada/nginx-autoindex:latest
-
-    location / {
-        root   /usr/share/nginx/html;
-        autoindex on;
-    }
 
 ```
-docker run --name=web -p 8080:80  -h web -v path_web_site:/usr/share/nginx/html -d jorgeandrada/nginx-autoindex
-```
-
-docker run -e MIRRORS="http://localhost:8080,http://192.168.1.81:8080" -p 8080:80 prueba
-docker run --name=rkhunter-mirror -p 8080:80 -d jorgeandrada/rkhunter-localmirror
+docker run --name=rkhunter-mirror -p 8080:80 -d jorgeandrada/rkhunter-localmirror```
 
 USING LOCAL MIRRORS
 When the '--update' or '--versioncheck' options are used, rkhunter uses a mirror site from the mirrors.dat file to obtain the required information. By default rkhunter will use any mirror listed in the file, and it will then rotate the list of mirrors. At the time of writing the supplied mirrors.dat file lists the Rootkit Hunter SourceForge site as a mirror.
