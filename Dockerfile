@@ -1,28 +1,28 @@
 # PASO 1
 FROM alpine:latest
 
-ARG VERSION=1.4.4
-ARG VERSIONCORTA=1.4
+ARG VERSIONRK=1.4.4
+ARG VERSIONRKCORTA=1.4
 
-COPY files/createversion.sh /root
+COPY files/createVERSIONRK.sh /root
 
 WORKDIR /root
 
 RUN apk add --update openssl \
-  && wget "https://sourceforge.net/projects/rkhunter/files/latest/download?source=files" -O rkhunter-$VERSION.tar.gz\
-  && tar -xf rkhunter-$VERSION.tar.gz \
-  && cd /root/rkhunter-$VERSION \
-  && mkdir -p /root/data/$VERSIONCORTA/i18n/$VERSION \
-  && cp ./files/i18n/* /root/data/$VERSIONCORTA/i18n/$VERSION/ \
+  && wget "https://sourceforge.net/projects/rkhunter/files/latest/download?source=files" -O rkhunter-$VERSIONRK.tar.gz\
+  && tar -xf rkhunter-$VERSIONRK.tar.gz \
+  && cd /root/rkhunter-$VERSIONRK \
+  && mkdir -p /root/data/$VERSIONRKCORTA/i18n/$VERSIONRK \
+  && cp ./files/i18n/* /root/data/$VERSIONRKCORTA/i18n/$VERSIONRK/ \
   && cp ./files/mirrors.dat ./files/programs_bad.dat ./files/backdoorports.dat ./files/suspscan.dat /root/data/ \
-  && /root/createversion.sh $VERSION $VERSIONCORTA
+  && /root/createVERSIONRK.sh $VERSIONRK $VERSIONRKCORTA
 
 # PASO 2
 FROM nginx:latest
 
 ARG BUILD_DATE
 ARG VCS_REF
-ARG VERSION
+ARG VERSIONRK
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="rkhunter-localmirror" \
       org.label-schema.description="rkhunter mirror for updates" \
