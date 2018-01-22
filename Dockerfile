@@ -4,7 +4,7 @@ FROM alpine:latest
 ARG VERSIONRK=1.4.4
 ARG VERSIONRKCORTA=1.4
 
-COPY files/createVERSIONRK.sh /root
+COPY files/createversion.sh /root
 
 WORKDIR /root
 
@@ -15,7 +15,7 @@ RUN apk add --update openssl \
   && mkdir -p /root/data/$VERSIONRKCORTA/i18n/$VERSIONRK \
   && cp ./files/i18n/* /root/data/$VERSIONRKCORTA/i18n/$VERSIONRK/ \
   && cp ./files/mirrors.dat ./files/programs_bad.dat ./files/backdoorports.dat ./files/suspscan.dat /root/data/ \
-  && /root/createVERSIONRK.sh $VERSIONRK $VERSIONRKCORTA
+  && /root/createversion.sh $VERSIONRK $VERSIONRKCORTA
 
 # PASO 2
 FROM nginx:latest
