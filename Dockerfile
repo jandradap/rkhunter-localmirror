@@ -13,6 +13,7 @@ RUN apk add --update openssl \
   && tar -xf rkhunter-$VERSIONRK.tar.gz \
   && cd /root/rkhunter-$VERSIONRK \
   && mkdir -p /root/data/$VERSIONRKCORTA/i18n/$VERSIONRK \
+  && echo $VERSIONRK > /root/data/rkhunter_latest.dat \
   && cp ./files/i18n/* /root/data/$VERSIONRKCORTA/i18n/$VERSIONRK/ \
   && cp ./files/mirrors.dat ./files/programs_bad.dat ./files/backdoorports.dat ./files/suspscan.dat /root/data/ \
   && /root/createversion.sh $VERSIONRK $VERSIONRKCORTA
