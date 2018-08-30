@@ -1,7 +1,7 @@
 # PASO 1
 FROM alpine:latest
 
-ARG VERSIONRK=1.4.4
+ARG VERSIONRK=1.4.6
 ARG VERSIONRKCORTA=1.4
 
 COPY files/createversion.sh /root
